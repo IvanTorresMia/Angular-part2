@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -10,14 +10,20 @@ export class ButtonComponent implements OnInit {
   // here we created new props 
   @Input() text: string;
   @Input() color: string;
+  // took an output (reusable output), then emit has it do something
+  // in other words we are making this button resuable
+  @Output() btnClick = new EventEmitter()
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
+
   }
 
   onClick() {
-   console.log("hello world")
+   this.btnClick.emit()
   }
 
-}
+} 
